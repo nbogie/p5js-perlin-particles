@@ -77,10 +77,9 @@
      this.numParticles = profile.np;
      
      this.drawLines = true;
-     var colorProfile = random([
+     var colorProfile = random([      
        {bg: [0, 0, 30, 5], p: [255, 105, 0, 20]}, 
        {bg: [0, 0, 30, 1], p: [204, 248, 0, 20]}, 
-       {bg: [0, 255, 45, 1], p: [255, 0, 255, 20]}, 
        {bg: [0, 0, 30, 1], p: [255, 105, 0, 20]}]);
      this.backgroundColor = colorProfile.bg;
      this.particleColor = colorProfile.p;
