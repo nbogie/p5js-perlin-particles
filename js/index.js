@@ -70,14 +70,23 @@
      this.animSpeed = 0.001;
      this.change = 0.04;
      this.drawForces = false;
-     this.maxSpeed = 4.0;
-     this.numParticles = 3000;
-     this.strength = 0.51;
+     
+     
+     
+     var profile = random([{ms: 9.0, s: 3.46, np: 1070}, {ms: 4.0, s: 0.51, np: 3000}]);
+     this.maxSpeed = profile.ms;
+     this.strength = profile.s;
+     this.numParticles = profile.np;
+     
      this.drawLines = true;
-     this.backgroundColor = random([[0, 0, 30, 5], [0, 0, 30, 1]]);
+     var colorProfile = random([
+       {bg: [0, 0, 30, 5], p: [255, 105, 0, 20]}, 
+       {bg: [0, 255, 45, 1], p: [255, 0, 255, 20]}, 
+       {bg: [0, 0, 30, 1], p: [255, 105, 0, 20]}]);
+     this.backgroundColor = colorProfile.bg;
+     this.particleColor = colorProfile.p;
      this.forceColor = [255, 255, 255];     
      
-     this.particleColor = [255, 105, 0, 20];
      this.reseed = function() {
        reseed();
      };
