@@ -13,6 +13,9 @@
      this.prevPos = this.pos.copy();
      this.vel = p5.Vector.random2D().mult(0.1 * random());
      this.acc = createVector();
+     
+     
+     this.maxSpeedMod = random(0.9, 1.1);
      this.updatePrevX = function() {
        this.prevPos.x = this.pos.x;
      }
@@ -22,9 +25,10 @@
      this.update = function() {
        this.updatePrevX();
        this.updatePrevY();
+       
 
        this.vel.add(this.acc);
-       this.vel.limit(gOpts.maxSpeed);
+       this.vel.limit(this.maxSpeedMod * gOpts.maxSpeed);
        this.pos.add(this.vel);
 
        if (this.pos.x < 0) {
