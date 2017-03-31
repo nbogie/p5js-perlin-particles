@@ -4,6 +4,10 @@
    var gNumCols = 10;
    var gNumRows = 10;
 
+
+  //TODO: have the particles gradually exhaust themselves, delay, 
+  //and relaunch.
+
    var Particle = function() {
      this.pos = createVector(random(width), random(height));
      this.prevPos = this.pos.copy();
@@ -66,8 +70,9 @@
      this.numParticles = 3000;
      this.strength = 0.51;
      this.drawLines = true;
-     this.backgroundColor = [0, 0, 30, 5];
-     this.lineColor = [255, 255, 255];     
+     this.backgroundColor = random([[0, 0, 30, 5], [0, 0, 30, 1]]);
+     this.forceColor = [255, 255, 255];     
+     
      this.particleColor = [255, 105, 0, 20];
      this.reseed = function() {
        reseed();
@@ -86,7 +91,7 @@
      createCanvas(nearestMult(windowWidth, gStep), nearestMult(windowHeight, gStep));
      gOpts = new Options();
      var gui = new dat.GUI();
-     gui.addColor(gOpts, 'lineColor');
+     gui.addColor(gOpts, 'forceColor');
      gui.addColor(gOpts, 'backgroundColor');     
      gui.addColor(gOpts, 'particleColor');
      gui.add(gOpts, 'animSpeed', 0, 0.003);
@@ -127,7 +132,7 @@
      rect(x, y, step, step);
      push();
      strokeWeight(1);
-     stroke(gOpts.lineColor);
+     stroke(gOpts.forceColor);
      var halfStep = step / 2;
      translate(x + halfStep, y + halfStep);
      rotate(angleForNoiseValue(val));
