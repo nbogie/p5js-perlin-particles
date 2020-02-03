@@ -4,6 +4,7 @@
    var gNumCols = 10;
    var gNumRows = 10;
 
+   p5.disableFriendlyErrors = true;
 
   //TODO: have the particles gradually exhaust themselves, delay, 
   //and relaunch.
